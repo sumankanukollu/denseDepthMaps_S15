@@ -4,9 +4,11 @@ import io,os,pdb
 from zipfile import ZipFile
 from PIL import Image
 from matplotlib import cm
+import matplotlib as plt
 import gc,pdb
 gc.enable()
 gc.get_threshold()
+gc.collect()
 
 def DepthNorm(x, maxDepth):
     return maxDepth / x
@@ -126,7 +128,8 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
             # img = Image.fromarray(plasma(rescaled)[:,:,:3],mode="RGB")
             # img.save(f"test{str(start)}.jpg")
             plt.figure(figsize=(2.24,2.24),dpi=100)
-            #plt.imshow(plasma(rescaled)[:,:,:3])
+            plt.imshow(plasma(rescaled)[:,:,:3])
+            plt.rcParams.update({'figure.max_open_warning': 0})
             plt.axis("off")
             #plt.savefig(f"test{str(start)}.jpg")
             #pdb.set_trace()
@@ -134,6 +137,9 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
             plt.savefig(os.path.join(os.getcwd(),'depthMapOutput',name))
             
         start+=1
+        gc.enable()
+        gc.get_threshold()
+        gc.collect()
         [print(start) if start/500 in range(1000) else None]
 
     
