@@ -86,12 +86,12 @@ Questions asked in 15A:
           | 1    | Background (BG) - JPG                              | 100   | 224 x 224 | - Library(50) + Classroom(50)                                |
           | 2    | Foreground (FG) - JPG                              | 100   | 96 x 96   | Dog breed (Chihuahua, golden_retriever, German_shepherd, Eskimo_dog) |
           | 3    | Mask - FG                                          | 100   | 96 x 96   |                                                              |
-          | 4    | FG on BG + FG Flip on BG                           | 20000 | 224 x 224 | ???                                                          |
-          | 5    | Random placement 1-FG on 1-BG at 20 locations      | 20    |           |                                                              |
-          | 6    | Random placement 1-FG-Flip on 1-BG at 20 locations | 20    |           |                                                              |
-        | 7    | BG-FG Images                                       | 400K  |           | Includes FG and FG-Flip                                      |
-        | 8    | BG-FG Mask Images                                  | 400K  |           | Includes FG and FG-Flip                                      |
-        | 9    | Dense Depth images for all BG-GF and BG-FG Flip    | 400K  |           |                                                              |
+          | 4    | FG on BG + FG Flip on BG                           | 20000 | 224 x 224 |                                                              |
+          | 5    | Random placement 1-FG on 1-BG at 20 locations      | 20    | 224 x 224 |                                                              |
+          | 6    | Random placement 1-FG-Flip on 1-BG at 20 locations | 20    | 224 x 224 |                                                              |
+        | 7    | BG-FG Images                                       | 400K  | 224 x 224 | Includes FG and FG-Flip                                      |
+        | 8    | BG-FG Mask Images                                  | 400K  | 224 x 224 | Includes FG and FG-Flip                                      |
+        | 9    | Dense Depth images for all BG-GF and BG-FG Flip    | 400K  | 224 x 224 |                                                              |
         | 10   | Total Images                                       | 1200K |           | 400K + 400K + 400K                                           |
 
      
@@ -130,11 +130,11 @@ Questions asked in 15A:
      3. Mean/STD values for your fg_bg, masks and depth images
        
         - **fg_bg images**
-        - Red Channel mean of bg_fg images 0.5360746
+          - Red Channel mean of bg_fg images 0.5360746
           - Green Channel mean of bg_fg images 0.46813193
-        - Blue Channel mean of bg_fg images 0.3992631
+          - Blue Channel mean of bg_fg images 0.3992631
           - Red Channel std dev of bg_fg images 0.25605327
-        - Blue Channel std dev of bg_fg images 0.24445891
+          - Blue Channel std dev of bg_fg images 0.24445891
           - Green Channel std dev of bg_fg images 0.2392703
         - **fg_bg flip images**
           - Red Channel mean of bg_fg_flip images 0.5360829
