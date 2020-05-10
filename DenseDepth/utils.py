@@ -70,6 +70,7 @@ def load_images(zipfilename,rstart,rend):
             x = np.clip(np.asarray(img, dtype=float) / 255, 0, 1)
             loaded_images.append(x)
             imgName.append(os.path.basename(i))
+    del files
     return (np.stack(loaded_images, axis=0),imgName)
 
 def to_multichannel(i):
