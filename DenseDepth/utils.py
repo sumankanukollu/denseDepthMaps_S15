@@ -134,7 +134,7 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
             plt.savefig(os.path.join(os.getcwd(),'depthMapOutput',name))
             
         start+=1
-        print(start)
+        [print(start) if start/500 in range(1000) else None]
 
     
 def display_images_bkp(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=True):
