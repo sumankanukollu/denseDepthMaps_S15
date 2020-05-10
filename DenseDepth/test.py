@@ -14,6 +14,7 @@ from matplotlib import pyplot as plt
 parser = argparse.ArgumentParser(description='High Quality Monocular Depth Estimation via Transfer Learning')
 parser.add_argument('--model', default='nyu.h5', type=str, help='Trained Keras model file.')
 parser.add_argument('--input', default='examples/*.png', type=str, help='Input filename or folder.')
+parser.add_argument('--batchSz','-b', default=20, type=int, help='represents the batch size')
 parser.add_argument('--start', '-s',default=1, type=str, help='start of file name.')
 parser.add_argument('--end', '-e',default=11, type=str, help='end-1 of file name.')
 parser.add_argument('--outputpath','-o', default=11, type=str, help='end-1 of file name.')
@@ -39,7 +40,7 @@ print('\nModel loaded ({0}).'.format(args.model))
 print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
 
 # Compute results
-outputs = predict(model, inputs)
+outputs = predict(model, inputs,batch_size=args.batchSz)
 #print(len(outputs))
 #saveDepthMapImages(outputs)
 #pdb.set_trace()
