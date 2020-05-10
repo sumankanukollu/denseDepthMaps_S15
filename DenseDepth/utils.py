@@ -5,6 +5,9 @@ from zipfile import ZipFile
 from PIL import Image
 from matplotlib import cm
 import matplotlib as plt
+import matplotlib.pyplot as plt
+import skimage
+from skimage.transform import resize
 import gc,pdb
 gc.enable()
 gc.get_threshold()
@@ -104,11 +107,8 @@ def saveDepthMapImages(outputs,outputPath=None):
         start+=1
         
 def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=True, is_rescale=True,start = 0, end = 10,imgName=None):
-    import matplotlib.pyplot as plt
     plt.rcParams.update({'figure.max_open_warning': 0})
     gc.disable()
-    import skimage
-    from skimage.transform import resize
     # Create a folder
     if outputPath is None:
         #if not os.path.exists(os.path.join(os.getcwd(),'depthMapOutput')):
@@ -121,27 +121,24 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
     shape = (outputs[0].shape[0], outputs[0].shape[1], 3)
     #print(shape)
     
-    for i in range(end-start):
-
+    #for i in range(end-start):
+    for i in np.arange(end-start):
+        
         if is_colormap:
             rescaled = outputs[i][:,:,0]
-            #print(rescaled.shape)
             #print(rescaled.shape)
             if is_rescale:
                 rescaled = rescaled - np.min(rescaled)
                 rescaled = rescaled / np.max(rescaled)
             #print(rescaled.shape)
-            
             # img = Image.fromarray(plasma(rescaled)[:,:,:3],mode="RGB")
             # img.save(f"test{str(start)}.jpg")
             plt.figure(figsize=(2.24,2.24),dpi=100)
             plt.imshow(plasma(rescaled)[:,:,:3])
             plt.axis("off")
             #plt.savefig(f"test{str(start)}.jpg")
-            #pdb.set_trace()
             name = os.path.basename(imgName[i])
             plt.savefig(os.path.join(os.getcwd(),'depthMapOutput',name))
-            
         start+=1
         [print(start) if start/500 in range(1000) else None]
     gc.enable()
