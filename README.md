@@ -224,7 +224,7 @@ Questions asked in 15A:
 - **Submission**
 
   1. Share the link to the readme file for your Assignment 15A. Read the assignment again to make sure you do not miss any part which you need to explain. -2500
-     - https://github.com/sumankanukollu/denseDepthMaps_S15/edit/master/README.md
+     - https://github.com/sumankanukollu/denseDepthMaps_S15/blob/master/README.md
 
   2. Share the link to your notebook which you used to create this dataset. We are expecting to see how you manipulated images, overlay code, depth predictions. -250
     - Script to create 100-Masks for FG Images : https://github.com/sumankanukollu/denseDepthMaps_S15/blob/master/scriptToGenerate_FG_transparent_mask.ipynb
