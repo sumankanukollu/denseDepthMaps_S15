@@ -128,7 +128,34 @@ Questions asked in 15A:
      2. The total size of the dataset
         - 1200K
      3. Mean/STD values for your fg_bg, masks and depth images
-        - ???
+       
+        - **fg_bg images**
+        - Red Channel mean of bg_fg images 0.5360746
+          - Green Channel mean of bg_fg images 0.46813193
+        - Blue Channel mean of bg_fg images 0.3992631
+          - Red Channel std dev of bg_fg images 0.25605327
+        - Blue Channel std dev of bg_fg images 0.24445891
+          - Green Channel std dev of bg_fg images 0.2392703
+        - **fg_bg flip images**
+          - Red Channel mean of bg_fg_flip images 0.5360829
+          - Green Channel mean of bg_fg_flip images 0.46815184
+          - Blue Channel mean of bg_fg_flip images 0.39928764
+          - Red Channel std dev of bg_fg_flip images 0.25606075
+          - Blue Channel std dev of bg_fg_flip images 0.24446595
+          - Green Channel std dev of bg_fg_flip images 0.23927386
+        - **bg_fg_mask images**
+          - mean of bg_fg_mask images: 0.054658275
+          - std dev of bg_fg_mask images: 0.22315167
+        - **bg_fg_flipmask**
+          - mean of bg_fg_mask images: 0.054657616
+          - std dev of bg_fg_mask images: 0.2231518
+        - **depth map images:**
+          - Red Channel mean of depth_map images 0.82477474
+          - Green Channel mean of depth_map images 0.61797315
+          - Blue Channel mean of depth_map images 0.64635575
+          - Red Channel std dev of depth_map images 0.27929935
+          - Blue Channel std dev of depth_map images 0.3886217
+          - Green Channel std dev of depth_map images 0.3228312
 
   3. Show your dataset the way I have shown above in this readme
 
