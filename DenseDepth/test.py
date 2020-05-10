@@ -17,6 +17,9 @@ parser.add_argument('--input', default='examples/*.png', type=str, help='Input f
 parser.add_argument('--start', '-s',default=1, type=str, help='start of file name.')
 parser.add_argument('--end', '-e',default=11, type=str, help='end-1 of file name.')
 parser.add_argument('--outputpath','-o', default=11, type=str, help='end-1 of file name.')
+parser.add_argument('--rstart', '-rs',default=1, type=str, help='start range.')
+parser.add_argument('--rend', '-re',default=11, type=str, help='end range.')
+
 args = parser.parse_args()
 
 # Custom object needed for inference and training
