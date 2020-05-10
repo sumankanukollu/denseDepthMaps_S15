@@ -9,6 +9,7 @@ from keras.models import load_model
 from layers import BilinearUpSampling2D
 from utils import predict, load_images, display_images,saveDepthMapImages
 from matplotlib import pyplot as plt
+from datetime import datetime
 
 # Argument Parser
 parser = argparse.ArgumentParser(description='High Quality Monocular Depth Estimation via Transfer Learning')
@@ -26,10 +27,12 @@ args = parser.parse_args()
 # Custom object needed for inference and training
 custom_objects = {'BilinearUpSampling2D': BilinearUpSampling2D, 'depth_loss_function': None}
 
-print('Loading model...')
-
 # Load model into GPU / CPU
+print('Loading model...')
+start_time = datetime.now()
 model = load_model(args.model, custom_objects=custom_objects, compile=False)
+end_time = datetime.now()
+print('Duration: {}'.format(end_time - start_time))
 
 print('\nModel loaded ({0}).'.format(args.model))
 
