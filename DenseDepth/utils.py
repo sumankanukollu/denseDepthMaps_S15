@@ -51,7 +51,7 @@ def load_images(zipfilename):
     loaded_images,imgName = [],[]
     zipObj = ZipFile(zipfilename, 'r')
     files = zipObj.namelist()
-    for i in files[:13]:
+    for i in files[args.rstart():args.rend()]:
         if i.startswith('bg_fg_1') or i.startswith('bg_fgFlip_1'):
             fileinp = zipObj.open(i, mode='r')
             img = Image.open(fileinp)
