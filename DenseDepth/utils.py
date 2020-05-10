@@ -126,7 +126,7 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
             # img = Image.fromarray(plasma(rescaled)[:,:,:3],mode="RGB")
             # img.save(f"test{str(start)}.jpg")
             plt.figure(figsize=(2.24,2.24),dpi=100)
-            plt.imshow(plasma(rescaled)[:,:,:3])
+            #plt.imshow(plasma(rescaled)[:,:,:3])
             plt.axis("off")
             #plt.savefig(f"test{str(start)}.jpg")
             #pdb.set_trace()
