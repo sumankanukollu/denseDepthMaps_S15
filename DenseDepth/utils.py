@@ -9,6 +9,7 @@ import gc,pdb
 gc.enable()
 gc.get_threshold()
 gc.collect()
+from datetime import datetime
 
 def DepthNorm(x, maxDepth):
     return maxDepth / x
@@ -19,11 +20,14 @@ def predict(model, images, minDepth=10, maxDepth=1000, batch_size=20):
     #print('images shape 0',images.shape[0])
     #print('images shape 1', images.shape[1])
     #print('images shape 2', images.shape[2])
+    start_time = datetime.now()
     if len(images.shape) < 3: images = np.stack((images,images,images), axis=2)
     if len(images.shape) < 4: images = images.reshape((1, images.shape[0], images.shape[1], images.shape[2]))
     # Compute predictions
     print('At batch sz : {}'.format(batch_size))
     predictions = model.predict(images, batch_size=batch_size)
+    end_time = datetime.now()
+    print('utils predict Duration: {}'.format(end_time - start_time))
     # Put in expected range
     return np.clip(DepthNorm(predictions, maxDepth=maxDepth), minDepth, maxDepth) / maxDepth
 
