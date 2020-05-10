@@ -45,13 +45,13 @@ def load_images_new(image_bytes):
 
 
 
-def load_images(zipfilename):
+def load_images(zipfilename,rstart,rend):
     gc.enable()
     gc.get_threshold()
     loaded_images,imgName = [],[]
     zipObj = ZipFile(zipfilename, 'r')
     files = zipObj.namelist()
-    for i in files[args.rstart():args.rend()]:
+    for i in files[rstart:rend]:
         if i.startswith('bg_fg_1') or i.startswith('bg_fgFlip_1'):
             fileinp = zipObj.open(i, mode='r')
             img = Image.open(fileinp)
