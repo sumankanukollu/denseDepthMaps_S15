@@ -100,6 +100,8 @@ def saveDepthMapImages(outputs,outputPath=None):
         
 def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=True, is_rescale=True,start = 0, end = 10,imgName=None):
     import matplotlib.pyplot as plt
+    plt.rcParams.update({'figure.max_open_warning': 0})
+    gc.disable()
     import skimage
     from skimage.transform import resize
     # Create a folder
@@ -129,7 +131,6 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
             # img.save(f"test{str(start)}.jpg")
             plt.figure(figsize=(2.24,2.24),dpi=100)
             plt.imshow(plasma(rescaled)[:,:,:3])
-            plt.rcParams.update({'figure.max_open_warning': 0})
             plt.axis("off")
             #plt.savefig(f"test{str(start)}.jpg")
             #pdb.set_trace()
@@ -137,10 +138,10 @@ def display_images(outputs,outputPath=None, inputs=None, gt=None, is_colormap=Tr
             plt.savefig(os.path.join(os.getcwd(),'depthMapOutput',name))
             
         start+=1
-        gc.enable()
-        gc.get_threshold()
-        gc.collect()
         [print(start) if start/500 in range(1000) else None]
+    gc.enable()
+    #gc.get_threshold()
+    gc.collect()
 
     
 def display_images_bkp(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=True):
