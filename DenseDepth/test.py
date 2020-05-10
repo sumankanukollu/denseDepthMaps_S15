@@ -27,23 +27,29 @@ args = parser.parse_args()
 # Custom object needed for inference and training
 custom_objects = {'BilinearUpSampling2D': BilinearUpSampling2D, 'depth_loss_function': None}
 
-# Load model into GPU / CPU
+# Step-1: Load model into GPU / CPU
 print('Loading model...')
 start_time = datetime.now()
 model = load_model(args.model, custom_objects=custom_objects, compile=False)
 end_time = datetime.now()
-print('Duration: {}'.format(end_time - start_time))
-
+print('### Step-1: Time took to load model : {}'.format(end_time - start_time))
 print('\nModel loaded ({0}).'.format(args.model))
 
-# Input images
-
+# Step-2: Input images
+start_time = datetime.now()
 #inputs = load_images( glob.glob(args.input) )
 (inputs,imgName) = load_images(args.input,rstart=args.rstart,rend=args.rend)
 print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
+end_time = datetime.now()
+print('### Step-2: Time took to load Images : {}'.format(end_time - start_time))
 
-# Compute results
+# Step-3: Compute results
+start_time = datetime.now()
 outputs = predict(model, inputs,batch_size=args.batchSz)
+end_time = datetime.now()
+print('### Step-3: Time took to compute results : {}'.format(end_time - start_time))
+
+
 #print(len(outputs))
 #saveDepthMapImages(outputs)
 #pdb.set_trace()
@@ -62,9 +68,12 @@ plt.show()
 '''
 
 # Display results
+start_time = datetime.now()
 display_images(outputs.copy(), inputs.copy(),start = int(args.start), end = int(args.end),imgName=imgName)
 # plt.figure(figsize=(1,1))
 # plt.imshow(viz)
 # plt.savefig('test.png')
 # plt.show()
+end_time = datetime.now()
+print('### Step-4: Time took to Display results : {}'.format(end_time - start_time))
 print("done")
